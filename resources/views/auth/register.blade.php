@@ -12,31 +12,34 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate method="POST" action="">
+                  <form class="row g-3 needs-validation" novalidate method="POST" action="{{url('register_post')}}">
+                    {{csrf_field()}}
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
+                      <label for="yourName" class="form-label" value="{{old('name')}}">Your First Name</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <div class="invalid-feedback">Please, enter your first name!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                      <label for="yourLast" class="form-label">Your Last Name</label>
+                      <input type="text" name="last_name" class="form-control" id="yourLast" required value="{{old('last_name')}}">
+                      <div class="invalid-feedback">Please enter your last name</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourUsername" class="form-label">Email</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <input type="email" name="email" class="form-control" id="yourUsername" required value="{{old('email')}}">
+                        <span style="color: red">{{$errors->first('email')}}</span>
+                        <div class="invalid-feedback">Please choose an Email.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <span style="color: red">{{$errors->first('password')}}</span>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 

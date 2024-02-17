@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -17,8 +18,14 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [AuthController::class, 'login']);
 
+Route::post('login_post', [AuthController::class, 'login_post']);
+
 Route::get('register', [AuthController::class, 'register']);
+
+Route::post('register_post', [AuthController::class, 'register_post']);
 
 Route::get('forgot', [AuthController::class, 'forgot']);
 
 Route::get('admin/dashboard', [DashboardController::class, 'index']);
+
+Route::get('admin/staff/list', [StaffController::class, 'index']);
